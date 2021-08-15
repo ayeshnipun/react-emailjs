@@ -12,7 +12,7 @@ const App = () => {
   };
 
   return (
-    <Row className="main_row">
+    <Row>
       <Card title="Email" style={{ width: 500 }}>
         <Form layout="vertical" name="nest-messages" onFinish={onFinish}>
           <Form.Item
