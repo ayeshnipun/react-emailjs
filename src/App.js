@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Form, Input, Button, Card, Row, Col } from "antd";
 
-function App() {
+const layout = {
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 },
+};
+
+const App = () => {
+  const onFinish = (values) => {
+    console.log(values);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Row className="main_row">
+      <Card title="Email" style={{ width: 500 }}>
+        <Form layout="vertical" name="nest-messages" onFinish={onFinish}>
+          <Form.Item
+            name="sender"
+            label="Your name"
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="senderEmail"
+            label="Your email"
+            rules={[{ type: "email" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="subject"
+            label="Subject"
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item name="message" label="Message">
+            <Input.TextArea />
+          </Form.Item>
+          <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+            <Button type="primary" htmlType="submit">
+              Send email
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
+    </Row>
   );
-}
+};
 
 export default App;
